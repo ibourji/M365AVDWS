@@ -57,18 +57,21 @@
     "adNicName": "[concat('ad-',parameters('NetworkInterfaceName'), parameters('deploymentNumber'))]"
   },
   "resources": [
-    {
-      "name": "[variables('adPubIPName')]",
-      "type": "Microsoft.Network/publicIPAddresses",
-      "location": "[parameters('location')]",
-      "apiVersion": "2019-12-01",
-      "tags": {
-        "displayName": "adPubIP"
-      },
-      "properties": {
-        "publicIPAllocationMethod": "Dynamic"
-      }
-    },
+  {
+  "name": "[variables('adPubIPName')]",
+  "type": "Microsoft.Network/publicIPAddresses",
+  "location": "[parameters('location')]",
+  "apiVersion": "2019-12-01",
+  "sku": {
+    "name": "Standard"
+  },
+  "tags": {
+    "displayName": "adPubIP"
+  },
+  "properties": {
+    "publicIPAllocationMethod": "Static"
+  }
+},
     {
       "apiVersion": "2019-12-01",
       "type": "Microsoft.Network/networkInterfaces",
